@@ -1,14 +1,9 @@
-# Multi Module Projet Spring
+# Web Service SOAP et REST avec Spring boot
 _(juste en dessous des badges sympatiques à placer)_
 
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com)
 
-Ce projet permet de comprendre les subtilités de spring 5
-en travaillant sur le concept de multi module
-l'idée etant de pouvoir decouper le projet en module et de créer les différentes dependances grace a MAVEN.
-configurer les différents fichiers pom.xml afin de gerer l'heritage des differentes dependances.
 
-au travers d'un jeu qui permet de deviner un nombre compris entre certaines valeurs generer aleatoirement.
 
 ## Pour commencer
 
@@ -19,8 +14,8 @@ telecharger ce projet sur votre environnement et lancer votre ide favoris en vou
 
 Ce qu'il est requis pour commencer avec votre projet...
 
-- Spring framework 5
-- JDk 11
+- Spring boot
+- JDk 1.8
 - Maven 3.6.3
 
 ### Installation
@@ -32,7 +27,26 @@ Les étapes pour installer votre programme....
 
 Ensuite vous pouvez montrer ce que vous obtenez au final...
 
-## Démarrage
+## Dependances :
+	##Parti Web Controller
+ * Web
+ * Rest Repositories
+ * jersey
+ 
+ ## Parti Persistance 
+ * Data rest
+ * JPA
+ 
+ ## utils
+ * lombock
+ * DevTools
+ 
+ ## SGBDR
+ * H2(utile pour la partie test)
+ 
+ 
+ 
+ 
 
 
 
@@ -45,7 +59,7 @@ Ensuite vous pouvez montrer ce que vous obtenez au final...
 * Spring MVC , Spring boot2 
 * Intellij idea Ultimate
 * MAVEN 3.6.3
-* Looging with SLF4J and Logback
+
 
 
 
