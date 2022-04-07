@@ -28,7 +28,7 @@ Les étapes pour installer votre programme....
 Ensuite vous pouvez montrer ce que vous obtenez au final...
 
 ## Dependances :
-	##Parti Web Controller
+	## Parti Web Controller
  * Web
  * Rest Repositories
  * jersey
