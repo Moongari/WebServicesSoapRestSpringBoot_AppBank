@@ -19,6 +19,7 @@ import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 
 
 //Utilisation de la bibliotheque RestController
+//utilisation du Dispatcher Servelt de SPRING MVC
 
 
 @RestController
