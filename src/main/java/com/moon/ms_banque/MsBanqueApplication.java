@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 import java.util.Date;
 import java.util.Random;
@@ -29,9 +30,11 @@ public class MsBanqueApplication {
 
 
 
+    //== exposer l'id avec spring data Rest
     @Bean
-    CommandLineRunner start(CompteRepository compteRepository)
+    CommandLineRunner start(CompteRepository compteRepository, RepositoryRestConfiguration restConfiguration)
     {
+        restConfiguration.exposeIdsFor(Compte.class);
        return args->{
             log.info("=== Affichage et test de la base de données ==== ");
            compteRepository.save(new Compte(null,Math.random()*9000,new Date(),TypeCompte.COURANT));
