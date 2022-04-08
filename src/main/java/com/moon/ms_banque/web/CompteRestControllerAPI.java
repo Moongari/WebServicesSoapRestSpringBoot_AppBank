@@ -22,7 +22,7 @@ import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 //utilisation du Dispatcher Servelt de SPRING MVC
 
 
-@RestController
+//@RestController
 @RequestMapping("/banque")
 public class CompteRestControllerAPI {
 
