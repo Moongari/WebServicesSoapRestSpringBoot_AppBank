@@ -1,38 +1,41 @@
 package com.moon.ms_banque.web;
 
 
-import com.moon.ms_banque.MsBanqueApplication;
 import com.moon.ms_banque.entities.Compte;
 import com.moon.ms_banque.repository.CompteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+import static javax.ws.rs.core.MediaType.*;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_XML_VALUE;
 
-//Utilisation de la bibliotheque JaxRS
-//Creation d'un controller avec JaxRS
 
-@Path("/banque")
-@Component
-public class CompteRestJaxRSAPI {
+//Utilisation de la bibliotheque RestController
+
+
+@RestController
+@RequestMapping("/banque")
+public class CompteRestControllerAPI {
 
 
     //=== constants ===
-    private static final Logger log = LoggerFactory.getLogger(CompteRestJaxRSAPI.class);
+    private static final Logger log = LoggerFactory.getLogger(CompteRestControllerAPI.class);
 
         @Autowired
         private CompteRepository compteRepository;
 
 
         @Path("/comptes")
-        @GET
-        @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+        @GetMapping(path = "/comptes",produces = {APPLICATION_JSON_VALUE,APPLICATION_XML_VALUE})
+
         public List<Compte> compteList(){
             log.info("=== Appel de la liste des différents comptes ===");
             return  compteRepository.findAll();
@@ -40,39 +43,34 @@ public class CompteRestJaxRSAPI {
 
 
         //== on definit different type de retour json et XML ===
-        // il faut pour cela declarer l'annotation @XmlRootElement sur la classe Compte
-    @Path("/comptes/{id}")
-    @GET
-    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
-    public Compte getOne(@PathParam(value = "id") Long id){
+
+    @GetMapping(path = "/comptes/{id}")
+    public Compte getOne(@PathVariable(value = "id") Long id){
 
         log.info("=== consulte un compte  {} ",id);
           return   compteRepository.findById(id).get();
     }
 
-    @Path("/comptes")
-    @POST
-    @Produces({MediaType.APPLICATION_JSON})
-    public Compte save(Compte compte){
+
+    @PostMapping(path = "/comptes")
+    public Compte save(@RequestBody Compte compte){
         log.info("===Creation d'un nouveau compte {} ",compte);
         return compteRepository.save(compte);
     }
 
 
 
-    @Path("/comptes/{id}")
-    @PUT
-    @Produces({MediaType.APPLICATION_JSON})
-    public Compte update(Compte compte,@PathParam("id") Long id){
+
+    @PutMapping(path = "/comptes/{id}")
+    public Compte update(@RequestBody Compte compte,@PathVariable("id") Long id){
             compte.setId(id);
         log.info("=== Mise a jour d'un compte {} - {}",compte, id);
         return compteRepository.save(compte);
     }
 
-    @Path("/comptes/{id}")
-    @DELETE
-    @Produces({MediaType.APPLICATION_JSON})
-    public void delete(@PathParam("id") Long id){
+
+    @DeleteMapping(path = "/comptes/{id}")
+    public void delete(@PathVariable("id") Long id){
         log.info("=== Suppression du compte numero {} ",id);
         compteRepository.deleteById(id);
     }

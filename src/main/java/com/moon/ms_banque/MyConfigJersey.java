@@ -11,7 +11,7 @@ public class MyConfigJersey {
 
         //=== creation du dispatcherServlet via Jersey ===
         //=== au demarrage de l'application springboot fait appel a ce dispatcher ===
-        @Bean
+        //@Bean
         public ResourceConfig resourceConfig(){
             ResourceConfig jerseyServlet = new ResourceConfig();
             jerseyServlet.register(CompteRestJaxRSAPI.class);
