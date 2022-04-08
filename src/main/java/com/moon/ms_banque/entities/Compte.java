@@ -29,6 +29,9 @@ public class Compte {
     @Enumerated(EnumType.STRING) // l'attribut sera de type numerique par defaut dans la BDD
     @Column(length = 10)
     private TypeCompte type;
+    @ManyToOne
+    private Client client;
+
 
 
 
