@@ -16,7 +16,7 @@ public interface CompteRepository extends JpaRepository<Compte,Long>
     //== on peut rechercher cela de cette facon
     //== http://localhost:8082/api/comptes/search/findByType?type=COURANT grace spring Data Rest==
     // nous pouvons egalement utilisé ceci pour definir nos propres parametre url
-    // http://localhost:8082/api/comptes/search/byType?t=EPARGNE
+    // http://localhost:8082/api/comptes/search/byType?t=EPARGNECompteRestJaxRSAPICompteRestJaxRSAPI
     @RestResource(path = "/byType")
     List<Compte> findByType(@Param("t") TypeCompte type);
 
